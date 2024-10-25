@@ -1,0 +1,355 @@
+/* Base styles for the body */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    padding: 1rem;
+    margin: 0;
+    animation: fadeIn 1s ease-in-out;
+    /* Fade in the body content */
+}
+
+/* Navigation menu styling */
+nav ul {
+    list-style-type: none;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    background-color: #dbdbdb;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Navigation list item styling */
+nav ul li {
+    margin-bottom: 10px;
+    margin: auto;
+}
+
+/* Smooth hover effect on navigation links */
+nav ul li a {
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+    background-color: #ccc;
+    /* Change background on hover */
+    color: #5568a8;
+    /* Change text color */
+}
+
+/* Headings styling */
+h1,
+h2 {
+    font-size: 1.5rem;
+    margin: 13px;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-x: auto;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Center align the individual results section */
+section#individual-results {
+    text-align: center;
+}
+
+/* Description list (dl, dt, dd) styling */
+dd {
+    display: inline-block;
+    margin-inline-start: 0;
+    unicode-bidi: normal;
+}
+
+dt {
+    font-weight: bold;
+    margin: 0 5%;
+}
+
+dl {
+    display: block;
+    align-self: center;
+    padding-left: 10px;
+    animation: slideIn 1s ease-in-out;
+    /* Slide in effect for data */
+}
+
+/* Figure caption styling */
+figcaption {
+    font-size: x-large;
+    font-weight: bold;
+    font-style: oblique;
+    transition: color 0.3s ease-in-out;
+}
+
+/* General div styling */
+div {
+    display: inline-flex;
+    text-align: center;
+    margin: 1%;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* Figure element styling */
+figure {
+    margin-inline-start: 0;
+}
+
+/* Sticky navigation bar */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    /* Ensures it stays above other content */
+}
+
+/* Gallery section styling */
+section#gallery {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    background-color: #dbdbdb;
+    border-radius: 10px;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+    /* Fade in effect for gallery */
+}
+
+section#gallery img {
+    margin: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+
+/* Footer styling */
+footer {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    background-color: #c9e6ff;
+    margin-top: 40px;
+    opacity: 0;
+    animation: fadeIn 3s forwards;
+    /* Fade in footer with delay */
+}
+
+/* Block display for footer's first and nth-child elements */
+footer:first-child,
+footer:nth-child(2),
+footer:nth-child(3),
+footer:nth-child(4) {
+    display: block;
+}
+
+/* General image styling */
+img {
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+
+/* Table row striping for alternating row colors */
+tr:nth-child(2n+1) {
+    background-color: #c9e6ff;
+}
+
+tr:first-child {
+    background-color: #dbdbdb;
+}
+
+/* Hover effect for table rows */
+tr:hover {
+    background-color: #c1c1c1;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Summary section styling */
+section#summary {
+    background-color: #c9e6ff;
+    border-radius: 10px;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    /* Fade in effect */
+}
+
+/* Styling for alternating individual results rows */
+section#individual-results:nth-child(2n) {
+    background-color: aliceblue;
+}
+
+.athlete:nth-child(2n) {
+    background-color: #c9e6ff;
+}
+
+.athlete:nth-child(2n+1) {
+    background-color: #dbdbdb;
+}
+
+/* Smooth hover effect for athletes */
+.athlete {
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.athlete:hover {
+    box-shadow: 5px 10px 5px #cacaca;
+    transform: scale(1.05);
+    /* Scale athlete section on hover */
+}
+
+/* General section styling */
+section {
+    margin: 13px;
+    padding: 10px;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    /* Fade in effect for sections */
+}
+
+/* Link styling */
+a {
+    margin: 0;
+    transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #5568a8;
+    border-bottom: 2px solid #5568a8;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Media query for reduced motion (disables animations and transitions) */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none;
+        transition: none;
+        scroll-behavior: auto;
+        /* Disable smooth scrolling */
+    }
+}
+
+/* Media query for light color scheme */
+@media (prefers-color-scheme: dark) {
+    body {
+        --bg-color: #121212;
+        --text-color: #e0e0e0;
+        --link-color: #1e90ff;
+        --nav-bg-color: #333333;
+        --footer-bg-color: #444444;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+    }
+
+    /* Adjust navigation background color */
+    nav {
+        background-color: var(--nav-bg-color);
+    }
+
+    /* Adjust footer background color */
+    footer {
+        background-color: var(--footer-bg-color);
+    }
+
+    /* Adjust link color */
+    a {
+        color: var(--link-color);
+    }
+
+    /* Table border color in dark mode */
+    table,
+    th,
+    td {
+        border-color: #555555;
+    }
+
+    /* Summary section background for light mode */
+    section#summary {
+        background-color: #333333;
+    }
+
+    /* Heading color adjustments */
+    h1,
+    h2 {
+        color: #ffffff;
+    }
+
+    /* Table row striping for dark mode */
+    tr:nth-child(2n+1) {
+        background-color: #3d3d3d;
+    }
+
+    /* Athlete alternating background colors for dark mode */
+    .athlete:nth-child(2n) {
+        background-color: #241056;
+    }
+
+    .athlete:nth-child(2n+1) {
+        background-color: #3d3d3d;
+    }
+
+    /* Navigation background color for dark mode */
+    nav ul {
+        background-color: #241056;
+    }
+
+    /* Gallery section background in dark mode */
+    section#gallery {
+        background-color: #333333;
+    }
+
+    /* Table row hover effect for dark mode */
+    tr:hover {
+        background-color: #232323;
+    }
+
+    /* Athlete hover effect for dark mode */
+    .athlete:hover {
+        box-shadow: 5px 10px 5px #393939;
+    }
+
+    /* Link hover color adjustments for dark mode */
+    a {
+        color: #9ab2e0;
+    }
+
+    a:hover {
+        color: #d0d4e3;
+    }
+}

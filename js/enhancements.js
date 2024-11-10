@@ -26,15 +26,17 @@ function toggleSection(button, sectionId) {
     }
 }
 
-// Image Modal
-function openModal(imgSrc) {
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("modalImg");
-    modalImg.src = imgSrc;
-    modal.style.display = "block";
+// JavaScript to handle broken images by replacing them with a placeholder
+function handleBrokenImages() {
+    const images = document.querySelectorAll('.athlete img');
+    images.forEach(img => {
+        img.onerror = function () {
+            this.onerror = null; // Prevent infinite loop if placeholder also fails
+            this.src = '../images/placeholder.png'; // Path to your placeholder image
+            this.alt = 'Placeholder image';
+        };
+    });
 }
 
-function closeModal() {
-    const modal = document.getElementById("imageModal");
-    modal.style.display = "none";
-}
+window.onload = handleBrokenImages; // Run on page load
+

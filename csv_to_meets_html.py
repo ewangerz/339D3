@@ -60,6 +60,7 @@ def csv_to_html(csv_filename, output_folder):
 <link rel="stylesheet" href="../css/reset.css">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/enhancements.css"> <!-- Link to enhancements.css -->
+<script src="../js/enhancements.js" defer></script> <!-- Link to enhancements.js -->
 </head>
 <body>
 <a href="#main">Skip to Main Content</a>
@@ -157,13 +158,6 @@ def csv_to_html(csv_filename, output_folder):
    <!-- Scroll-to-Top Button -->
    <button onclick="scrollToTop()" id="scrollTopBtn">Top</button>
 
-   <!-- Modal for Images -->
-   <div id="imageModal" class="modal">
-       <span class="close" onclick="closeModal()">&times;</span>
-       <img class="modal-content" id="modalImg">
-   </div>
-
-   <script src="../js/enhancements.js"></script> <!-- Link to enhancements.js -->
 </body>
 </html>
 """

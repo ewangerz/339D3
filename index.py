@@ -86,7 +86,7 @@ def generate_homepage(meets_folder, output_file="index.html"):
     </section>
 
     <footer>
-        <p>Skyline Cross Country | <a href="https://instagram.com/a2skylinexc">Follow us on Instagram</a></p>
+        <p>Skyline Cross Country </p>
     </footer>
 
     </body>

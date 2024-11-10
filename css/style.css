@@ -33,9 +33,7 @@ nav ul li a {
 
 nav ul li a:hover {
     background-color: #ccc;
-    /* Change background on hover */
     color: #5568a8;
-    /* Change text color */
 }
 
 /* Headings styling */
@@ -82,7 +80,6 @@ dl {
     align-self: center;
     padding-left: 10px;
     animation: slideIn 1s ease-in-out;
-    /* Slide in effect for data */
 }
 
 /* Figure caption styling */
@@ -112,7 +109,6 @@ nav {
     position: sticky;
     top: 0;
     z-index: 1000;
-    /* Ensures it stays above other content */
 }
 
 /* Gallery section styling */
@@ -124,15 +120,7 @@ section#gallery {
     border-radius: 10px;
     opacity: 0;
     animation: fadeIn 2s forwards;
-    /* Fade in effect for gallery */
 }
-
-section#gallery img {
-    margin: auto;
-    transition: transform 0.3s ease-in-out;
-}
-
-
 
 /* Footer styling */
 footer {
@@ -144,10 +132,8 @@ footer {
     margin-top: 40px;
     opacity: 0;
     animation: fadeIn 3s forwards;
-    /* Fade in footer with delay */
 }
 
-/* Block display for footer's first and nth-child elements */
 footer:first-child,
 footer:nth-child(2),
 footer:nth-child(3),
@@ -161,8 +147,6 @@ img {
     object-fit: cover;
     transition: transform 0.3s ease-in-out;
 }
-
-
 
 /* Table row striping for alternating row colors */
 tr:nth-child(2n+1) {
@@ -185,7 +169,6 @@ section#summary {
     border-radius: 10px;
     opacity: 0;
     animation: fadeIn 1s forwards;
-    /* Fade in effect */
 }
 
 /* Styling for alternating individual results rows */
@@ -209,7 +192,6 @@ section#individual-results:nth-child(2n) {
 .athlete:hover {
     box-shadow: 5px 10px 5px #cacaca;
     transform: scale(1.05);
-    /* Scale athlete section on hover */
 }
 
 /* General section styling */
@@ -218,7 +200,6 @@ section {
     padding: 10px;
     opacity: 0;
     animation: fadeIn 1s forwards;
-    /* Fade in effect for sections */
 }
 
 /* Link styling */
@@ -255,18 +236,28 @@ a:hover {
     }
 }
 
-/* Media query for reduced motion (disables animations and transitions) */
+/* Media query to disable animations for users with reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
     * {
-        animation: none;
+        animation: none !important;
         transition: none;
         scroll-behavior: auto;
-        /* Disable smooth scrolling */
+    }
+
+    /* Ensure sections are visible immediately without fade-in */
+    body,
+    section,
+    footer,
+    section#gallery,
+    section#summary {
+        opacity: 1 !important;
     }
 }
 
 /* Media query for light color scheme */
 @media (prefers-color-scheme: dark) {
+
+    /* Dark mode styling overrides */
     body {
         --bg-color: #121212;
         --text-color: #e0e0e0;
@@ -277,45 +268,37 @@ a:hover {
         color: var(--text-color);
     }
 
-    /* Adjust navigation background color */
     nav {
         background-color: var(--nav-bg-color);
     }
 
-    /* Adjust footer background color */
     footer {
         background-color: var(--footer-bg-color);
     }
 
-    /* Adjust link color */
     a {
         color: var(--link-color);
     }
 
-    /* Table border color in dark mode */
     table,
     th,
     td {
         border-color: #555555;
     }
 
-    /* Summary section background for light mode */
     section#summary {
         background-color: #333333;
     }
 
-    /* Heading color adjustments */
     h1,
     h2 {
         color: #ffffff;
     }
 
-    /* Table row striping for dark mode */
     tr:nth-child(2n+1) {
         background-color: #3d3d3d;
     }
 
-    /* Athlete alternating background colors for dark mode */
     .athlete:nth-child(2n) {
         background-color: #241056;
     }
@@ -324,27 +307,22 @@ a:hover {
         background-color: #3d3d3d;
     }
 
-    /* Navigation background color for dark mode */
     nav ul {
         background-color: #241056;
     }
 
-    /* Gallery section background in dark mode */
     section#gallery {
         background-color: #333333;
     }
 
-    /* Table row hover effect for dark mode */
     tr:hover {
         background-color: #232323;
     }
 
-    /* Athlete hover effect for dark mode */
     .athlete:hover {
         box-shadow: 5px 10px 5px #393939;
     }
 
-    /* Link hover color adjustments for dark mode */
     a {
         color: #9ab2e0;
     }

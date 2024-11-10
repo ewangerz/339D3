@@ -21,10 +21,14 @@ class MeetNameParser(HTMLParser):
             self.meet_name = data.strip()
 
 def extract_meet_name(html_file):
-    """Extracts the meet name from the <h1> tag of an HTML file."""
+    """Extracts the meet name from the <h1> tag of an HTML file, if it exists."""
     parser = MeetNameParser()
-    with open(html_file, 'r', encoding='utf-8') as file:
-        parser.feed(file.read())
+    try:
+        with open(html_file, 'r', encoding='utf-8') as file:
+            parser.feed(file.read())
+    except FileNotFoundError:
+        print(f"File {html_file} not found.")
+        return None
     return parser.meet_name
 
 def generate_homepage(meets_folder, output_file="index.html"):
@@ -43,8 +47,6 @@ def generate_homepage(meets_folder, output_file="index.html"):
     </head>
     <body>
 
-    
-
     <header>
         <h1>Cross Country Meets Homepage</h1>
         <p>Explore all the cross-country meets below.</p>
@@ -52,7 +54,7 @@ def generate_homepage(meets_folder, output_file="index.html"):
 
     <main>
     <section id="meets-list">
-    <h2>Available Meets</h2>
+    <h2 tabindex="0">Available Meets</h2>
     <div class="meet-boxes">
     """
 
@@ -63,17 +65,20 @@ def generate_homepage(meets_folder, output_file="index.html"):
         # Extract the actual meet name from the HTML file
         meet_name = extract_meet_name(meet_file_path)
         
-        # Fallback to the file name if no meet name was found in the <h1> tag
-        if not meet_name:
-            meet_name = os.path.splitext(meet_file)[0].replace("-", " ").title()
-        
-        # Create a meet box with a link to the meet file
-        html_content += f"""
-        <div class="meet-box">
-            <h3>{meet_name}</h3>
-            <a href="{meet_file}">View Meet Details</a>
-        </div>
-        """
+        # Only add the meet if a valid meet name was found
+        if meet_name:
+            # Fallback to the file name if no meet name was found in the <h1> tag
+            meet_name = meet_name or os.path.splitext(meet_file)[0].replace("-", " ").title()
+            
+            # Create a meet box with a link to the meet file
+            html_content += f"""
+            <div class="meet-box">
+                <h3>{meet_name}</h3>
+                <a href="{meet_file}">View Meet Details</a>
+            </div>
+            """
+        else:
+            print(f"Skipping {meet_file}: No valid <h1> tag found.")
 
     # Step 4: Close the HTML structure
     html_content += """
@@ -81,7 +86,7 @@ def generate_homepage(meets_folder, output_file="index.html"):
     </section>
 
     <footer>
-        <p>Skyline Cross Country | <a href="https://instagram.com/a2skylinexc" style="color:white;">Follow us on Instagram</a></p>
+        <p>Skyline Cross Country | <a href="https://instagram.com/a2skylinexc">Follow us on Instagram</a></p>
     </footer>
 
     </body>
@@ -95,7 +100,6 @@ def generate_homepage(meets_folder, output_file="index.html"):
 
     print(f"Homepage created successfully at: {homepage_path}")
 
-
 def create_meet_homepage():
     # Define the meets folder path
     meets_folder = os.path.join(os.getcwd(), "meets")
@@ -107,7 +111,6 @@ def create_meet_homepage():
 
     # Call the function to generate the homepage
     generate_homepage(meets_folder)
-
 
 if __name__ == "__main__":
     create_meet_homepage()

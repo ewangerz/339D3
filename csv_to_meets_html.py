@@ -199,11 +199,18 @@ def select_random_photos(folder_path, num_photos=25):
     return random.sample(image_files, num_photos)
 
 # Step 3: Generate HTML image tags
+# Step 3: Generate HTML image tags
 def generate_image_tags(image_files, folder_path):
     img_tags = []
     for img in image_files:
         img_path = os.path.join(folder_path, img)
-        img_tags.append(f'<img src="../{img_path}" width="200" alt="" onclick="openModal(this.src)">')
+        
+        # Only include the image if the file exists
+        if os.path.isfile(img_path):
+            img_tags.append(f'<img src="../{img_path}" width="200" alt="" onclick="openModal(this.src)">')
+        else:
+            print(f"Image '{img}' not found, skipping in gallery.")
+            
     return "\n".join(img_tags)
 
 # Putting it all together
@@ -216,6 +223,7 @@ def create_meet_image_gallery(url):
     
     selected_photos = select_random_photos(folder_path)
     return generate_image_tags(selected_photos, folder_path)
+
 
 if __name__ == "__main__":
     meets_folder = os.path.join(os.getcwd(), "meets")

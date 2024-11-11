@@ -121,7 +121,7 @@ def csv_to_html(csv_filename, output_folder):
                 html_content += f"""
 <div class="athlete">
 <figure> 
-    <img src="../images/profiles/{profile_pic}" width="200" alt="Profile picture of {name}" onclick="openModal(this.src)"> 
+    <img src="../images/profiles/{profile_pic}" width="200" alt="Profile picture of {name}" "> 
     <figcaption>{name}</figcaption>
 </figure>
 <dl>
@@ -207,7 +207,7 @@ def generate_image_tags(image_files, folder_path):
         
         # Only include the image if the file exists
         if os.path.isfile(img_path):
-            img_tags.append(f'<img src="../{img_path}" width="200" alt="" onclick="openModal(this.src)">')
+            img_tags.append(f'<img src="../{img_path}" width="200" alt="">')
         else:
             print(f"Image '{img}' not found, skipping in gallery.")
             
